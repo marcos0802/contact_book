@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Lato'
+}
+
+.card-header h1{
+    color: #fff;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+h2{
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 800
+}
