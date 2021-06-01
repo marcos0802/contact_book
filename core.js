@@ -4,6 +4,8 @@ let contactSurname = document.querySelector("#surname");
 let contactName = document.querySelector("#name");
 let contactGroup = document.querySelector("#group");
 let contactBio = document.querySelector("#bio");
+let contactPicture = document.querySelector("#input_Imagees");
+let selectImage = document.querySelector("#inputImage");
 
 const container = document.querySelector("#contact");
 const card = document.createElement("div");
@@ -11,6 +13,17 @@ card.classList = "card";
 
 const saveBtn = document.querySelector("#saveBtn");
 const resetBtn = document.querySelector("#resetBtn");
+
+selectImage = document
+  .querySelector('input[type="file"]')
+  .addEventListener("change", function () {
+    if (this.files && this.files[0]) {
+      contactPicture.onload = () => {
+        URL.revokeObjectURL(contactPicture.src); // no longer needed, free memory
+      };
+      contactPicture.src = URL.createObjectURL(this.files[0]); // set src to blob url
+    }
+  });
 
 function addContact(c_surname, c_name, c_group, c_bio) {
   let contact = {
@@ -24,6 +37,7 @@ function addContact(c_surname, c_name, c_group, c_bio) {
 
 function resetFields() {
   contactSurname.value = "";
+  contactGroup.value = "-- Select --";
   contactName.value = "";
   contactBio.value = "";
 }
